@@ -9,6 +9,28 @@ package br.edu.ceub;
 //  - Envio de notificação via EmailService
 // Além disso, possui métodos que retornam valores para facilitar a comunicação dos resultados.
 class OrderProcessor {
+
+    private DiscountService discountService;
+    private InventoryService inventoryService;
+    private PaymentService paymentService;
+    private OrderRepository repository;
+    private EmailService emailService;
+
+    public OrderProcessor(
+        DiscountService discountService,
+        InventoryService inventoryService,
+        PaymentService paymentService,
+        OrderRepository repository,
+        EmailService emailService
+        ) {
+        this.discountService = discountService;
+        this.inventoryService = inventoryService;
+        this.paymentService = paymentService;
+        this.repository = repository;
+        this.emailService = emailService;
+
+    }
+
     // Método que calcula o total bruto do pedido.
     public double computeTotal(Order order) {
         double total = 0;
@@ -37,33 +59,28 @@ class OrderProcessor {
         double total = computeTotal(order);
 
         // Aplicação de desconto
-        DiscountService discountService = new DiscountService();
         double discount = discountService.calculateDiscount(order);
         double finalTotal = total - discount;
 
         // Verificação de estoque
-        InventoryService inventoryService = new InventoryService();
         if (!inventoryService.checkInventory(order)) {
             System.out.println("Falha na verificação de estoque para o pedido " + order.getOrderId());
             return false;
         }
 
         // Processamento do pagamento
-        PaymentService paymentService = new PaymentService();
         if (!paymentService.processPayment(order, finalTotal)) {
             System.out.println("Pagamento falhou para o pedido " + order.getOrderId());
             return false;
         }
 
         // Persistência do pedido
-        OrderRepository repository = new OrderRepository();
         if (!repository.saveOrder(order, finalTotal)) {
             System.out.println("Falha ao salvar o pedido " + order.getOrderId());
             return false;
         }
 
         // Envio de notificação por email
-        EmailService emailService = new EmailService();
         if (!emailService.sendEmail("cliente@example.com", "Seu pedido foi processado com sucesso. " +
                 "Resumo:\n" + getOrderSummary(order, finalTotal))) {
             System.out.println("Falha no envio de email para o pedido " + order.getOrderId());
