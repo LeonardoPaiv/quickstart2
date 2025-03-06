@@ -1,10 +1,7 @@
 package br.edu.ceub;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.math.BigInteger;
 
 import org.junit.jupiter.api.Test;
 
