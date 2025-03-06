@@ -23,6 +23,7 @@ public class OrderProcessorTest {
         );
         order = new Order("ORD123", items);
         processor = new OrderProcessor();
+        rawTotal = 250;
     }
     
     @Test
