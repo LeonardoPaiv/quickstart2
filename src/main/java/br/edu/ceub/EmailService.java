@@ -5,6 +5,6 @@ package br.edu.ceub;
 public class EmailService {
     public boolean sendEmail(String to, String message) {
         System.out.println("Enviando email para " + to + ": " + message);
-        return true;
+        return false;
     }
 }

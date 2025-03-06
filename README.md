@@ -94,3 +94,28 @@ Nesta tarefa, os alunos devem criar testes unitários para validar o método `pr
    - Use `assertTrue(result)` para confirmar que o pagamento foi processado com sucesso.
 
 ---
+
+# Tarefa de Teste Unitário: Refatoração e Uso de Mockito para Testar o Fluxo Completo
+
+Nesta tarefa, os alunos irão inicialmente tentar testar o método `process` da classe `OrderProcessor` 
+
+---
+
+## Cenário Inicial: Testando sem Mockito
+
+**Contexto:**
+- Os métodos `sendEmail` (na classe `EmailService`) e `saveOrder` (na classe `OrderRepository`) foram modificados para sempre retornar `false`.
+- Essa alteração simula falhas nos serviços e demonstra a dificuldade de testar o método `process` sem a capacidade de simular comportamentos diferentes.
+
+### Passos:
+
+1. **Criar um Teste para `OrderProcessor`:**
+    - Crie a classe de teste `OrderProcessorTest.java` em `src/test/java/seu/grupo/`.
+    - Escreva um teste que invoque o método `process` e observe que, devido aos métodos fixos que retornam `false`, o teste sempre falhará mesmo que os outros componentes estejam corretos.
+
+2. **Reflexão:**
+    - Discuta em sala as dificuldades encontradas ao tentar testar o fluxo completo sem mocks.
+    - Identifique como o acoplamento forte e a ausência de injeção de dependências tornam impossível simular cenários de sucesso para etapas como a persistência ou envio de email.
+
+---
+
