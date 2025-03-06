@@ -65,3 +65,32 @@ Nesta tarefa, os alunos devem criar testes unitários para validar o método `co
     - Utilize uma asserção (por exemplo, `assertEquals(expected, actual)`) para comparar o valor retornado com a soma esperada dos itens.
 
 ---
+
+# Tarefa de Teste Unitário: Validando o Método processPayment
+
+Nesta tarefa, os alunos devem criar testes unitários para validar o método `processPayment` da classe `PaymentService`. Este método simula o processamento de pagamento e retorna `true` para indicar que o pagamento foi realizado com sucesso.
+
+---
+
+## Passos da Tarefa
+
+1. **Preparar o Ambiente de Teste:**
+   - Certifique-se de que o Maven e o JUnit 5 estão configurados corretamente.
+
+2. **Criar a Classe de Teste:**
+   - Crie uma nova classe de teste, por exemplo, `PaymentServiceTest.java`.
+
+3. **Escrever os Testes Unitários:**
+   - **Teste Básico:**
+      - Crie um objeto `Order` com dados de teste (pode ser um pedido simples com um ou mais itens).
+      - Instancie a classe `PaymentService`.
+      - Chame o método `processPayment`, passando o objeto `Order` e um valor de pagamento.
+      - Utilize a asserção `assertTrue` para verificar se o método retorna `true`.
+
+   - **(Opcional)**:  
+     Teste com diferentes valores de pagamento para reforçar que o método sempre retorna `true` e simula corretamente o processamento de pagamento.
+
+4. **Utilizar as Asserções do JUnit 5:**
+   - Use `assertTrue(result)` para confirmar que o pagamento foi processado com sucesso.
+
+---
