@@ -40,3 +40,28 @@ Como desafio, os alunos devem implementar um método de soma na classe `App` do 
 
 - **Aplicar Boas Práticas de Desenvolvimento:**  
   Incentivar a escrita de testes unitários desde o início, mesmo em projetos simples, reforçando a importância de isolar funcionalidades para melhorar a testabilidade do código.
+
+---
+
+# Tarefa de Teste Unitário: Validando o Método computeTotal
+
+Nesta tarefa, os alunos devem criar testes unitários para validar o método `computeTotal` da classe `OrderProcessor`. Esse método é responsável por calcular o total bruto de um pedido, somando o valor de cada item (preço * quantidade).
+
+---
+
+## Passos da Tarefa
+
+1. **Preparar o Ambiente de Teste:**
+    - Certifique-se de que o Maven e o JUnit 5 estão configurados.
+    - Os testes devem ser criados na pasta padrão.
+
+2. **Criar a Classe de Teste:**
+    - Crie uma classe de teste para `OrderProcessor`, por exemplo, `OrderProcessorTest.java`.
+
+3. **Escrever o Teste Unitário para computeTotal:**
+    - Instancie alguns objetos `OrderItem` com valores conhecidos.
+    - Crie um objeto `Order` contendo esses itens.
+    - Chame o método `computeTotal` da classe `OrderProcessor`.
+    - Utilize uma asserção (por exemplo, `assertEquals(expected, actual)`) para comparar o valor retornado com a soma esperada dos itens.
+
+---
