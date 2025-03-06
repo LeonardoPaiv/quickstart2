@@ -25,4 +25,8 @@ public class App {
             System.out.println("Falha ao processar o pedido.");
         }
     }
+
+    public static int somar (int a, int b) {
+        return a + b;
+    }
 }
