@@ -97,7 +97,7 @@ Nesta tarefa, os alunos devem criar testes unitários para validar o método `pr
 
 # Tarefa de Teste Unitário: Refatoração e Uso de Mockito para Testar o Fluxo Completo
 
-Nesta tarefa, os alunos irão inicialmente tentar testar o método `process` da classe `OrderProcessor` 
+Nesta tarefa, os alunos irão inicialmente tentar testar o método `process` da classe `OrderProcessor` sem utilizar Mockito, para constatar como o acoplamento dificulta o teste (especialmente porque os métodos `sendEmail` e `saveOrder` foram alterados para sempre retornar `false`). Em seguida, os alunos deverão refatorar a classe `OrderProcessor` para permitir a injeção de dependências e utilizar o Mockito para isolar os testes.
 
 ---
 
@@ -119,3 +119,33 @@ Nesta tarefa, os alunos irão inicialmente tentar testar o método `process` da 
 
 ---
 
+## Parte 2: Refatoração para Injeção de Dependências e Uso de Mockito
+
+### Passos para Refatoração e Teste:
+
+1. **Refatorar a Classe OrderProcessor:**
+    - Modifique a classe `OrderProcessor` para aceitar suas dependências via construtor (ou setters), permitindo a injeção de:
+        - `DiscountService`
+        - `InventoryService`
+        - `PaymentService`
+        - `OrderRepository`
+        - `EmailService`
+    - Essa refatoração torna possível substituir as implementações reais por mocks durante os testes.
+
+2. **Configurar o Ambiente de Teste com Mockito:**
+    - Adicione as dependências do Mockito ao seu projeto (via Maven, por exemplo).
+    - No seu teste, utilize o Mockito para criar mocks para cada uma das dependências citadas.
+
+3. **Criar a Classe de Teste com Mocks:**
+    - Crie ou atualize a classe de teste `OrderProcessorTest.java`.
+    - Utilize o `@BeforeEach` para inicializar os mocks e injetá-los em uma nova instância de `OrderProcessor`.
+
+4. **Escrever Cenários de Teste:**
+    - **Fluxo de Sucesso:**
+        - Configure os mocks para simular sucesso em cada etapa (por exemplo, configure `saveOrder` e `sendEmail` para retornarem `true`).
+        - Verifique se o método `process` retorna `true`.
+    - **Fluxo de Falha:**
+        - Configure os mocks para simular falhas específicas (por exemplo, `orderRepository.saveOrder` e `emailService.sendEmail` retornando `false`).
+        - Verifique se o método `process` retorna `false` quando uma ou mais etapas falham.
+
+---
